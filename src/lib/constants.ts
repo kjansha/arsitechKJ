@@ -225,6 +225,7 @@ export const FAQS = [
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
@@ -234,6 +235,7 @@ export const FOOTER_LINKS = {
   quickLinks: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
     { label: "About", href: "/about" },
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },

@@ -4,12 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ShieldCheckIcon } from "@heroicons/react/24/solid";
-
-const navLinks = [
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +38,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -86,7 +81,7 @@ export default function Navigation() {
         }`}
       >
         <div className="px-4 py-4 space-y-2">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
