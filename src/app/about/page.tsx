@@ -13,8 +13,119 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      {/* Why "Arsi" */}
+      <section className="pt-32 pb-20 bg-primary bg-grid-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-primary to-secondary opacity-95" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <AnimatedSection animation="fade-up">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">Why &quot;Arsi&quot;?</h1>
+            <p className="text-xl text-gray-300 leading-relaxed mb-6">
+              The name &quot;Arsi&quot; comes from the Arsi region of Oromia — a nod to my heritage and the values of community, trust, and dedication that I bring to every client relationship.
+            </p>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              Just as the Arsi region is known for its resilience and strength, Arsi Technology Group is built to be your steadfast technology partner here in Minnesota and beyond.
+            </p>
+            <p className="text-gray-400 mt-6 italic text-lg">Fluent in Afan Oromo (the Oromo people&apos;s language)</p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Our Values */}
+      <section className="py-20 bg-primary bg-grid-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-95" />
+
+        {/* Floating elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-1/4 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-cyan/10 rounded-full blur-3xl animate-float delay-300" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Values</h2>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {ABOUT_VALUES.map((value, index) => (
+              <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 h-full">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-cyan flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-white">{index + 1}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
+                  <p className="text-gray-300">{value.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Minnesota Focus */}
+      <section className="py-16 bg-primary bg-grid-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-primary to-cyan/20 opacity-95" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <AnimatedSection animation="fade-up">
+            <MapPinIcon className="w-12 h-12 text-accent mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-white mb-4">Proudly Serving Minnesota Businesses</h2>
+            <p className="text-gray-300 text-lg">
+              Based in the Twin Cities, we understand the unique needs of Minnesota businesses. From Minneapolis and St. Paul to Rochester and Duluth, we provide technology solutions tailored to local companies while also serving clients nationwide.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 bg-primary bg-grid-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-95" />
+
+        {/* Floating elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-48 h-48 bg-cyan/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-10 right-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-float-slow delay-200" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <AnimatedSection animation="fade-up">
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <AcademicCapIcon className="w-10 h-10 text-accent" />
+              <h2 className="text-3xl font-bold text-white text-center">Education</h2>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {FOUNDER_EDUCATION.map((edu, index) => (
+              <AnimatedSection key={index} animation="fade-up" delay={index * 150}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 h-full">
+                  <div className="text-accent font-semibold text-sm mb-2">{edu.date}</div>
+                  <h3 className="text-xl font-bold text-white mb-2">{edu.degree}</h3>
+                  <p className="text-gray-200 font-medium">{edu.school}</p>
+                  <p className="text-gray-400 text-sm">{edu.location}</p>
+                  {edu.gpa && (
+                    <div className="mt-3 inline-block px-3 py-1 bg-accent/20 rounded-full text-accent text-sm font-medium">
+                      GPA: {edu.gpa}
+                    </div>
+                  )}
+                  {edu.focus && (
+                    <p className="mt-2 text-gray-300 text-sm">Focus: {edu.focus}</p>
+                  )}
+                  {edu.minor && (
+                    <p className="mt-2 text-gray-300 text-sm">Minor: {edu.minor}</p>
+                  )}
+                  {edu.courses && (
+                    <p className="mt-2 text-gray-400 text-sm">{edu.courses}</p>
+                  )}
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
-      <section className="pt-[70px] bg-primary bg-grid-pattern relative overflow-hidden">
+      <section className="py-20 bg-primary bg-grid-pattern relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-95" />
 
         {/* Floating elements */}
@@ -116,53 +227,6 @@ export default function AboutPage() {
                 </div>
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section className="py-20 bg-primary bg-grid-pattern relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-95" />
-
-        {/* Floating elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 h-48 bg-cyan/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-10 right-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-float-slow delay-200" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center justify-center gap-3 mb-12">
-              <AcademicCapIcon className="w-10 h-10 text-accent" />
-              <h2 className="text-3xl font-bold text-white text-center">Education</h2>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {FOUNDER_EDUCATION.map((edu, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 150}>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 h-full">
-                  <div className="text-accent font-semibold text-sm mb-2">{edu.date}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{edu.degree}</h3>
-                  <p className="text-gray-200 font-medium">{edu.school}</p>
-                  <p className="text-gray-400 text-sm">{edu.location}</p>
-                  {edu.gpa && (
-                    <div className="mt-3 inline-block px-3 py-1 bg-accent/20 rounded-full text-accent text-sm font-medium">
-                      GPA: {edu.gpa}
-                    </div>
-                  )}
-                  {edu.focus && (
-                    <p className="mt-2 text-gray-300 text-sm">Focus: {edu.focus}</p>
-                  )}
-                  {edu.minor && (
-                    <p className="mt-2 text-gray-300 text-sm">Minor: {edu.minor}</p>
-                  )}
-                  {edu.courses && (
-                    <p className="mt-2 text-gray-400 text-sm">{edu.courses}</p>
-                  )}
-                </div>
-              </AnimatedSection>
-            ))}
           </div>
         </div>
       </section>
@@ -284,70 +348,6 @@ export default function AboutPage() {
               </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
-
-      {/* Why "Arsi" */}
-      <section className="py-16 bg-primary bg-grid-pattern relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-primary to-secondary opacity-95" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <AnimatedSection animation="fade-up">
-            <h2 className="text-2xl font-bold text-white mb-6">Why &quot;Arsi&quot;?</h2>
-            <p className="text-lg text-gray-300 leading-relaxed mb-4">
-              The name &quot;Arsi&quot; comes from the Arsi region of Ethiopia — a nod to my heritage and the values of community, trust, and dedication that I bring to every client relationship.
-            </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Just as the Arsi region is known for its resilience and strength, Arsi Technology Group is built to be your steadfast technology partner here in Minnesota and beyond.
-            </p>
-            <p className="text-gray-400 mt-4 italic">Fluent in Afan Oromo (the Oromo people&apos;s language)</p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="py-20 bg-primary bg-grid-pattern relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-95" />
-
-        {/* Floating elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-1/4 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-cyan/10 rounded-full blur-3xl animate-float delay-300" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <AnimatedSection animation="fade-up">
-            <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Values</h2>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {ABOUT_VALUES.map((value, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
-                <div className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 h-full">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-cyan flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-white">{index + 1}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
-                  <p className="text-gray-300">{value.description}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Minnesota Focus */}
-      <section className="py-16 bg-primary bg-grid-pattern relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-primary to-cyan/20 opacity-95" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <AnimatedSection animation="fade-up">
-            <MapPinIcon className="w-12 h-12 text-accent mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-white mb-4">Proudly Serving Minnesota Businesses</h2>
-            <p className="text-gray-300 text-lg">
-              Based in the Twin Cities, we understand the unique needs of Minnesota businesses. From Minneapolis and St. Paul to Rochester and Duluth, we provide technology solutions tailored to local companies while also serving clients nationwide.
-            </p>
-          </AnimatedSection>
         </div>
       </section>
 
